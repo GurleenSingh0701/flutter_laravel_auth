@@ -7,7 +7,8 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _obscurePassword = true;
@@ -30,6 +31,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
       CurvedAnimation(
         parent: _animationController,
         curve: const Interval(0, 0.5, curve: Curves.easeIn),
+      ),
     );
 
     _transformAnimation = Tween<double>(begin: 0.3, end: 1).animate(
@@ -154,8 +156,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                               if (value == null || value.isEmpty) {
                                 return 'Please enter your email';
                               }
-                              if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                  .hasMatch(value)) {
+                              if (!RegExp(
+                                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                              ).hasMatch(value)) {
                                 return 'Please enter a valid email';
                               }
                               return null;
@@ -165,24 +168,25 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           TextFormField(
                             controller: passwordController,
                             obscureText: _obscurePassword,
-                            decoration: _buildInputDecoration(
-                              context,
-                              "Password",
-                              Icons.lock,
-                            ).copyWith(
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _obscurePassword
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                            decoration:
+                                _buildInputDecoration(
+                                  context,
+                                  "Password",
+                                  Icons.lock,
+                                ).copyWith(
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _obscurePassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _obscurePassword = !_obscurePassword;
+                                      });
+                                    },
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    _obscurePassword = !_obscurePassword;
-                                  });
-                                },
-                              ),
-                            ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter your password';
@@ -202,9 +206,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                               },
                               child: Text(
                                 "Forgot Password?",
-                                style: TextStyle(
-                                  color: colorScheme.primary,
-                                ),
+                                style: TextStyle(color: colorScheme.primary),
                               ),
                             ),
                           ),
@@ -231,9 +233,10 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                     ),
                                     child: Text(
                                       "Login",
-                                      style: theme.textTheme.titleMedium?.copyWith(
-                                        color: colorScheme.onPrimary,
-                                      ),
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                            color: colorScheme.onPrimary,
+                                          ),
                                     ),
                                   ),
                           ),
@@ -273,7 +276,10 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   }
 
   InputDecoration _buildInputDecoration(
-      BuildContext context, String label, IconData icon) {
+    BuildContext context,
+    String label,
+    IconData icon,
+  ) {
     final theme = Theme.of(context);
     return InputDecoration(
       labelText: label,
@@ -284,10 +290,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
       ),
       filled: true,
       fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.5),
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 16,
-        horizontal: 16,
-      ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
     );
   }
 }
