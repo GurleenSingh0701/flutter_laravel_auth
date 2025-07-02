@@ -185,7 +185,7 @@ class _DashboardPageState extends State<DashboardPage>
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withAlpha(0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
