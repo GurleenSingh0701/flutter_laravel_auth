@@ -111,7 +111,11 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('MONGODB_URI'),
+            'database' => env('MONGODB_DATABASE'),
+        ],
     ],
 
     /*
@@ -150,16 +154,7 @@ return [
             'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
             'persistent' => env('REDIS_PERSISTENT', false),
         ],
-
-        'default' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'username' => env('REDIS_USERNAME'),
-            'password' => env('REDIS_PASSWORD'),
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB', '0'),
-        ],
-
+        'default' => env('DB_CONNECTION', 'mongodb'),
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),

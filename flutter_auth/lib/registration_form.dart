@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/login_page.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -81,8 +82,8 @@ class _RegistrationPageState extends State<RegistrationPage>
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              colorScheme.primaryContainer.withOpacity(0.8),
-              colorScheme.secondaryContainer.withOpacity(0.8),
+              colorScheme.primaryContainer.withAlpha(80),
+              colorScheme.secondaryContainer.withAlpha(80),
             ],
           ),
         ),
@@ -187,8 +188,8 @@ class _RegistrationPageState extends State<RegistrationPage>
                                       _obscurePassword
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
-                                      color: colorScheme.onSurface.withOpacity(
-                                        0.6,
+                                      color: colorScheme.onSurface.withAlpha(
+                                        60,
                                       ),
                                     ),
                                     onPressed: () {
@@ -223,8 +224,8 @@ class _RegistrationPageState extends State<RegistrationPage>
                                       _obscureConfirmPassword
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
-                                      color: colorScheme.onSurface.withOpacity(
-                                        0.6,
+                                      color: colorScheme.onSurface.withAlpha(
+                                        60,
                                       ),
                                     ),
                                     onPressed: () {
@@ -285,7 +286,12 @@ class _RegistrationPageState extends State<RegistrationPage>
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to Login
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginPage(),
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   "Login",

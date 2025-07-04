@@ -4,11 +4,19 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use MongoDB\Laravel\Auth\User as Authenticatable; // Use MongoDB's Authenticatable
+use Laravel\Sanctum\HasApiTokens; // If using Laravel Sanctum
 
 class User extends Authenticatable
 {
+
+
+    use HasApiTokens, Notifiable;
+
+    protected $connection = 'mongodb'; // Specify MongoDB connection
+    protected $collection = 'users'; // MongoDB collection name for users
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 

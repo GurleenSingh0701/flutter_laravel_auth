@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/registration_form.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -250,7 +251,12 @@ class _LoginPageState extends State<LoginPage>
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to Register
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => RegistrationPage(),
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   "Register",
@@ -289,7 +295,7 @@ class _LoginPageState extends State<LoginPage>
         borderSide: BorderSide.none,
       ),
       filled: true,
-      fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.5),
+      fillColor: theme.colorScheme.surface.withAlpha(80),
       contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
     );
   }

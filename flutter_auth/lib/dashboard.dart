@@ -202,7 +202,7 @@ class _DashboardPageState extends State<DashboardPage>
                 color: color,
               ),
             ),
-            Text(label, style: TextStyle(color: color.withOpacity(0.8))),
+            Text(label, style: TextStyle(color: color.withAlpha(80))),
           ],
         ),
       ),
@@ -241,11 +241,11 @@ class _DashboardPageState extends State<DashboardPage>
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [color.withOpacity(0.8), color]),
+          gradient: LinearGradient(colors: [color.withAlpha(80), color]),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.3),
+              color: color.withAlpha(30),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
